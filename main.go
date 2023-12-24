@@ -30,6 +30,11 @@ func handlePostRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if requestBody.Message == "" {
+		http.Error(w, "Invalid JSON message: Missing 'message' field", http.StatusBadRequest)
+		return
+	}
+
 	fmt.Printf("Received message: %s\n", requestBody.Message)
 
 	responseBody := ResponseBody{
