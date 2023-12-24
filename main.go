@@ -26,11 +26,6 @@ func handlePostRequest(w http.ResponseWriter, r *http.Request) {
 	err := decoder.Decode(&requestBody)
 
 	if err != nil {
-		http.Error(w, "Error while Decoding", http.StatusBadRequest)
-		return
-	}
-
-	if requestBody.Message == "" || requestBody.Message != "message" {
 		http.Error(w, "Invalid JSON message", http.StatusBadRequest)
 		return
 	}
